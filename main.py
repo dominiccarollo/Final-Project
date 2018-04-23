@@ -15,8 +15,8 @@
 #             for where the ship can move.
 #     Week 4: Day 1: Try and finish adding commnets to my existing code do I don't get confused and know what is going
 #                    on when I try and personalize the game.  After I am going to try and get github working
-#             Day 2: Finish setting up Github and then continue with the game tuorial from Python Crach Course
-#             Day 3:
+#             Day 2: Finish setting up Github and then continue with the game tutorial from Python Crach Course
+#             Day 3: Continue with the crash course game pg 264
 
 #import libraries
 import pygame
@@ -41,7 +41,7 @@ def run_game():
     while True: 
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
+        gf.update_bullets(bullets)
         gf.update_screen(ai_settings, screen, ship, bullets)
 #runs the game
 run_game()
