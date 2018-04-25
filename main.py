@@ -16,12 +16,16 @@
 #     Week 4: Day 1: Try and finish adding commnets to my existing code do I don't get confused and know what is going
 #                    on when I try and personalize the game.  After I am going to try and get github working
 #             Day 2: Finish setting up Github and then continue with the game tutorial from Python Crach Course
-#             Day 3: Continue with the crash course game pg 264
+#             Day 3: Continue with the crash course game
+#     Week 5: Day 1: Present current project and start adding aliens with time I have left.
+#             Day 2: Finish the presentations and continue setting up the enemies and making them move down the screen
+#             Day 3: 
 
 #import libraries
 import pygame
 from pygame.sprite import Group
 from settings import Settings
+from game_stats import GameStats
 from ship import Ship
 import game_functions as gf
 
@@ -32,16 +36,21 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
+    #create an instance to store game statistics
+    stats = GameStats(ai_settings)
+    #make groups to store the ship, bullets and aliens in
     ship = Ship(ai_settings, screen)
-    #make a group to store bullets in
     bullets = Group()
-    #Set the background color.
-    bg_color = (195, 255, 234)
-    # Start the main loop for the game.
+    aliens = Group()
+    #creating the fleet of aliens
+    gf.create_fleet(ai_settings, screen, ship, aliens)
+    #Start the main loop for the game.
     while True: 
         gf.check_events(ai_settings, screen, ship, bullets)
-        ship.update()
-        gf.update_bullets(bullets)
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        if stats.game_active:
+            ship.update()
+            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 #runs the game
 run_game()

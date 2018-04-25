@@ -26,6 +26,9 @@ class Ship():
         if self.moving_left and self.rect.left > 0:
             self.center -= self.ai_settings.ship_speed_factor
         self.rect.centerx = self.center
+    #draw the ship at its current location
     def blitme(self):
-        #draw the ship at its current location
         self.screen.blit(self.image, self.rect)
+    #center the ship on the screen
+    def center_ship(self):
+        self.center = self.screen_rect.centerx
