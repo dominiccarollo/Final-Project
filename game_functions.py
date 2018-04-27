@@ -34,7 +34,7 @@ def check_events(ai_settings, screen, ship, bullets):
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
 #updates the screen when called upon
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     #Update images on the screen and flip to the new screen.
     #Redraw the screen during each pass through the loop
     screen.fill(ai_settings.bg_color)
@@ -43,6 +43,9 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
+    #draw play button if screen is inactive
+    if not stats.game_active:
+        play_button.draw_button()
     #Make the most recently drawn screen visible.
     pygame.display.flip()
 
@@ -140,4 +143,3 @@ def change_fleet_direction(ai_settings, aliens):
     for alien in aliens.sprites():
         alien.rect.y += ai_settings.fleet_drop_speed
     ai_settings.fleet_direction *= -1
-#check if the fleet is at an edge, and then update the position of all aliens in the fleet
