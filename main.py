@@ -23,6 +23,9 @@
 #     Week 6: Day 1: Gone for confirmation class
 #             Day 2: Add a play button and spped up the game when a fleet is destoryed
 #             Day 3: Begin adding a scoring system to give points and tell how many ships are left
+#             Day 4: Fix the scoring system so that all ships that are hit give points and start adding a high score
+#                    tracker, an image that tells you what level you are on and let the player know how many ships are
+#                    left until they die.  Finish this over the weekend.
 
 #import libraries
 import pygame
@@ -54,11 +57,11 @@ def run_game():
     gf.create_fleet(ai_settings, screen, ship, aliens)
     #Start the main loop for the game.
     while True:
-        gf.check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
+        gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
         if stats.game_active:
             ship.update()
             gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
-            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
         gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
 #runs the game
 run_game()

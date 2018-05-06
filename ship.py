@@ -2,10 +2,12 @@
 
 #import libraries
 import pygame
+from pygame.sprite import Sprite
 
 #set up a class for the ship that has functions for how to move, shoot, etc.
-class Ship():
+class Ship(Sprite):
     def __init__(self, ai_settings, screen):
+        super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
         #Load the ship image and get its rect(rectangular position coordinates)
