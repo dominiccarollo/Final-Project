@@ -18,7 +18,7 @@ class Settings():
         #settings for the aliens
         self.fleet_drop_speed = 10
         #how quickly the game speeds up
-        self.speedup_scale = 1.1
+        self.speedup_scale = 1.15
         self.initialize_dynamic_settings()
         #How quickly the alien point values increase
         self.score_scale = 1.5

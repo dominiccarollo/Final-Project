@@ -26,6 +26,8 @@
 #             Day 4: Fix the scoring system so that all ships that are hit give points and start adding a high score
 #                    tracker, an image that tells you what level you are on and let the player know how many ships are
 #                    left until they die.  Finish this over the weekend.
+# Sources
+#     Python Crash Course Project 1
 
 #import libraries
 import pygame
